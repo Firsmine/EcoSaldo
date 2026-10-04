@@ -37,7 +37,60 @@
         </div>
       </nav>
 
-      <div id="transaksiContainer"></div>
+      <div id="transaksiContainer">
+        <div class="bannerTransaksi">
+          <h1>Input Transaksi</h1>
+          <p>Catat transaksi penukaran sampahmu di sini.</p>
+        </div>
+        <div class="formTransaksi">
+          <div class="dataTransaksi">
+            <h2>Data Nasabah</h2>
+            <label for="namaNasabah">Nama</label>
+            <input type="text" id="namaNasabah" placeholder="Nama Anda" />
+            <label for="telpNasabah">No. Telepon</label>
+            <input type="text" id="telpNasabah" placeholder="0812-3456-7890" />
+            <label for="alamatNasabah">Alamat</label>
+            <input type="text" id="alamatNasabah" placeholder="Alamat Anda" />
+
+            <h2>Jenis Sampah</h2>
+            <select name="sampah" id="sampahNasabah">
+              <option value="none">Pilih Jenis Sampah</option>
+              <option value="plastik">Plastik</option>
+              <option value="kertas">Kertas</option>
+              <option value="kaca">Kaca</option>
+              <option value="logam">Logam</option>
+              <option value="elektronik">Elektronik</option>
+            </select>
+            <div class="beratSampahNasabah">
+              <label for="beratSampahNasabah">Berat (kg)</label>
+              <div class="inputBeratSampah">
+                <input
+                  class="inputBerat"
+                  type="number"
+                  name="quantity"
+                  value="0"
+                  min="0"
+                />
+                <button
+                  class="btnBerat"
+                  data-quantity="minus"
+                  data-field="quantity"
+                >
+                  -
+                </button>
+                <button
+                  class="btnBerat"
+                  data-quantity="plus"
+                  data-field="quantity"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="daftarTransaksi"></div>
+        </div>
+      </div>
 
       <footer>
         <div class="footerInfo">

@@ -14,3 +14,19 @@ themeToggle.addEventListener("click", () => {
   themeIcon.src = next === "dark" ? "assets/sun.png" : "assets/moon.png";
   localStorage.setItem("ecoSaldo-theme", next);
 });
+
+// berat sampah transaksi
+const btnBerat = document.querySelectorAll(".btnBerat");
+btnBerat.forEach((button) => {
+  button.addEventListener("click", () => {
+    const input = button.parentElement.querySelector(".inputBerat");
+    let value = parseInt(input.value) || 0;
+    if (button.dataset.quantity === "plus") {
+      value++;
+    }
+    if (button.dataset.quantity === "minus" && value > 0) {
+      value--;
+    }
+    input.value = value;
+  });
+});
