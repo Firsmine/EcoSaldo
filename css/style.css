@@ -1,19 +1,24 @@
 :root {
-  --bg: #ebedee;
-  --bg2: white;
-  --text: black;
-  --header: #134e32;
+  --primary: #134e32;
   --accent: #488935;
-  --light: #d7f4cf;
-  --shadow: rgba(0, 0, 0, 0.5);
+  --bg: #f4f7f3;
+  --bg-card: #ffffff;
+  --bg-alt: #e8f1e5;
+  --text: #08140d;
+  --text-muted: #64736a;
+  --border: #dce5dd;
+  --shadow: 0 4px 16px rgba(19, 78, 50, 0.1);
 }
-
 [data-theme="dark"] {
-  --bg: #0f2a1c;
-  --bg2: #1c422f;
-  --text: #f1f5f9;
-  --light: #d7f4cf;
-  --shadow: rgba(0, 0, 0, 0.5);
+  --primary: #134e32;
+  --accent: #488935;
+  --bg: #0f2118;
+  --bg-card: #173526;
+  --bg-alt: #1d4430;
+  --text: #f1f5f3;
+  --text-muted: #a8b8af;
+  --border: #2c4b3b;
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
 * {
@@ -28,7 +33,7 @@ body {
 }
 /* NAVBAR */
 nav {
-  background: var(--bg2);
+  background: var(--bg-card);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -57,11 +62,11 @@ nav {
   letter-spacing: 1px;
 }
 .namaLogo p {
-  color: var(--header);
+  color: var(--text);
   font-size: 0.9rem;
 }
 .eco {
-  color: var(--header);
+  color: var(--primary);
 }
 .navLinks {
   display: flex;
@@ -74,7 +79,7 @@ nav {
   font-weight: 700;
 }
 .navLinks a {
-  color: var(--header);
+  color: var(--text);
   text-decoration: none;
 }
 .navFunction {
@@ -96,7 +101,7 @@ nav {
 }
 #inputSearch {
   border-radius: 5px;
-  border: 1px solid black;
+  border: 1px solid var(--border);
   width: 11rem;
   height: 2rem;
   padding: 1rem;
@@ -106,7 +111,7 @@ nav {
   width: 3rem;
   height: 2rem;
   background: var(--light);
-  border: 1px solid black;
+  border: 1px solid var(--border);
   box-shadow: 0 1px 3px var(--shadow);
 }
 
@@ -149,7 +154,8 @@ nav {
   display: flex;
   justify-content: space-between;
   padding: 2rem;
-  background: var(--bg2);
+  background: var(--bg-alt);
+  color: var(--text);
 }
 .benefit {
   display: flex;
@@ -161,7 +167,7 @@ nav {
   width: 50px;
   height: 50px;
   padding: 0.3rem;
-  background: var(--light);
+  background: #dce5dd;
   border-radius: 50%;
 }
 
@@ -170,18 +176,18 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  color: var(--header);
 }
 .judulKategoriSection h3 {
   font-weight: 800;
   font-size: 1.5rem;
+  color: var(--primary);
 }
 .judulKategoriSection button {
   border: none;
   border-radius: 10px;
   width: 8rem;
   height: 2.5rem;
-  background: var(--accent);
+  background: var(--primary);
   color: white;
   font-weight: 600;
   box-shadow: 0 1px 5px var(--shadow);
@@ -191,9 +197,10 @@ nav {
   justify-content: space-between;
   gap: 1rem;
   padding: 2rem;
+  color: var(--text);
 }
 .kartuKategori {
-  background: var(--bg2);
+  background: var(--bg-card);
   border-radius: 10px;
   box-shadow: 0 1px 3px var(--shadow);
   width: 16rem;
@@ -211,13 +218,14 @@ nav {
   align-items: center;
   margin-bottom: 1rem;
   object-fit: scale-down;
+  background: white;
 }
 
 footer {
-  background: var(--header);
+  background: var(--primary);
   height: 15rem;
   padding: 2rem;
-  color: var(--bg);
+  color: var(--text);
 }
 .footerInfo {
   display: flex;
@@ -245,4 +253,7 @@ footer {
 .copyright {
   font-size: 1rem;
   margin-top: 1rem;
+}
+hr {
+  border: 1px solid var(--text);
 }
