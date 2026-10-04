@@ -8,6 +8,14 @@
   --shadow: rgba(0, 0, 0, 0.5);
 }
 
+[data-theme="dark"] {
+  --bg: #0f2a1c;
+  --bg2: #1c422f;
+  --text: #f1f5f9;
+  --light: #d7f4cf;
+  --shadow: rgba(0, 0, 0, 0.5);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -77,7 +85,7 @@ nav {
   height: 18px;
   align-items: center;
 }
-#btnTheme {
+#themeToggle {
   border: none;
   background: none;
   margin-right: 1.5rem;
