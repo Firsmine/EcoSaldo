@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoSaldo - Transaksi</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <img src="assets/EcoSaldo.png" alt="Logo EcoSaldo" />
+          <div class="namaLogo">
+            <h1><span class="eco">Eco</span>Saldo</h1>
+            <p>Bank Sampah Digital</p>
+          </div>
+        </div>
+        <ul class="navLinks">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="tentang.html">Tentang</a></li>
+          <li><a href="produk.html">Produk</a></li>
+          <li><a href="kalkulator.html">Kalkulator</a></li>
+          <li><a href="transaksi.html">Transaksi</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+        <div class="navFunction">
+          <button id="btnTheme">
+            <img src="assets/moon.png" class="navIcon" />
+          </button>
+          <div class="search">
+            <input type="text" id="inputSearch" placeholder="Cari Sesuatu" />
+            <button id="searchBtn">
+              <img src="assets/search.png" class="navIcon" />
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <div id="transaksiContainer"></div>
+
+      <footer>
+        <div class="footerInfo">
+          <div class="brandFooter">
+            <h2>EcoSaldo</h2>
+            <p>
+              Sampah Terkelola,<br />
+              Saldo Bertambah.
+            </p>
+          </div>
+          <div>
+            <h3 class="headerFooter">Informasi Lebih Lanjut</h3>
+            <p>
+              Cari tahu selengkapnya tentang kami mulai dari visi,
+              <br />misi hingga layanan kami.
+            </p>
+            <button
+              class="btnFooter"
+              onclick="window.location.href = 'tentang.html'"
+            >
+              Tentang Kami
+            </button>
+          </div>
+          <div>
+            <h3 class="headerFooter">Hubungi Kami</h3>
+            <p>
+              Jika ada pertanyaan, saran, atau ingin bekerja sama, <br />
+              jangan ragu untuk menghubungi kontak kami.
+            </p>
+            <button
+              class="btnFooter"
+              onclick="window.location.href = 'kontak.html'"
+            >
+              Kontak
+            </button>
+          </div>
+        </div>
+
+        <hr />
+        <h6 align="center" class="copyright">&copy; 2026 EcoSaldo.</h6>
+      </footer>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

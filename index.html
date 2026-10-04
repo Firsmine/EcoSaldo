@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EcoSaldo</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <div class="container">
@@ -17,12 +17,12 @@
           </div>
         </div>
         <ul class="navLinks">
-          <li><a href="#beranda">Beranda</a></li>
-          <li><a href="#tentang">Tentang</a></li>
-          <li><a href="#produk">Produk</a></li>
-          <li><a href="#kalkulator">Kalkulator</a></li>
-          <li><a href="#transaksi">Transaksi</a></li>
-          <li><a href="#kontak">Kontak</a></li>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="tentang.html">Tentang</a></li>
+          <li><a href="produk.html">Produk</a></li>
+          <li><a href="kalkulator.html">Kalkulator</a></li>
+          <li><a href="transaksi.html">Transaksi</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
         </ul>
         <div class="navFunction">
           <button id="btnTheme">
@@ -37,7 +37,7 @@
         </div>
       </nav>
 
-      <div id="beranda">
+      <div id="berandaContainer">
         <div class="banner">
           <h2>
             Sampah Aman <br />
@@ -49,7 +49,12 @@
             dan jadilah bagian dari lingkungan yang lebih bersih <br />
             demi masa depan cerah bersama EcoSaldo.
           </p>
-          <button id="btnGabung">Gabung Sekarang</button>
+          <button
+            id="btnGabung"
+            onclick="window.location.href = 'transaksi.html'"
+          >
+            Gabung Sekarang
+          </button>
         </div>
 
         <div class="benefitSection">
@@ -79,7 +84,12 @@
         <div class="kategoriSection">
           <div class="judulKategoriSection">
             <h3>Kategori Sampah Populer</h3>
-            <button class="btnKategori">Lihat Semua &rightarrow;</button>
+            <button
+              class="btnKategori"
+              onclick="window.location.href = 'produk.html'"
+            >
+              Lihat Semua &rightarrow;
+            </button>
           </div>
           <div class="kartuKategoriSection">
             <div class="kartuKategori">
@@ -120,40 +130,50 @@
             </div>
           </div>
         </div>
-
-        <footer>
-          <div class="footerInfo">
-            <div class="brandFooter">
-              <h2>EcoSaldo</h2>
-              <p>
-                Sampah Terkelola,<br />
-                Saldo Bertambah.
-              </p>
-            </div>
-            <div>
-              <h3 class="headerFooter">Informasi Lebih Lanjut</h3>
-              <p>
-                Cari tahu selengkapnya tentang kami mulai dari visi,
-                <br />misi hingga layanan kami.
-              </p>
-              <button class="btnFooter">Tentang Kami</button>
-            </div>
-            <div>
-              <h3 class="headerFooter">Hubungi Kami</h3>
-              <p>
-                Jika ada pertanyaan, saran, atau ingin bekerja sama, <br />
-                jangan ragu untuk menghubungi kontak kami.
-              </p>
-              <button class="btnFooter">Kontak</button>
-            </div>
-          </div>
-
-          <hr />
-          <h6 align="center" class="copyright">&copy; 2026 EcoSaldo.</h6>
-        </footer>
       </div>
+
+      <footer>
+        <div class="footerInfo">
+          <div class="brandFooter">
+            <h2>EcoSaldo</h2>
+            <p>
+              Sampah Terkelola,<br />
+              Saldo Bertambah.
+            </p>
+          </div>
+          <div>
+            <h3 class="headerFooter">Informasi Lebih Lanjut</h3>
+            <p>
+              Cari tahu selengkapnya tentang kami mulai dari visi,
+              <br />misi hingga layanan kami.
+            </p>
+            <button
+              class="btnFooter"
+              onclick="window.location.href = 'tentang.html'"
+            >
+              Tentang Kami
+            </button>
+          </div>
+          <div>
+            <h3 class="headerFooter">Hubungi Kami</h3>
+            <p>
+              Jika ada pertanyaan, saran, atau ingin bekerja sama, <br />
+              jangan ragu untuk menghubungi kontak kami.
+            </p>
+            <button
+              class="btnFooter"
+              onclick="window.location.href = 'kontak.html'"
+            >
+              Kontak
+            </button>
+          </div>
+        </div>
+
+        <hr />
+        <h6 align="center" class="copyright">&copy; 2026 EcoSaldo.</h6>
+      </footer>
     </div>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>
