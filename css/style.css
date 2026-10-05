@@ -13,7 +13,7 @@
   --primary: #134e32;
   --accent: #488935;
   --bg: #0f2118;
-  --bg-card: #173526;
+  --bg-card: #205138;
   --bg-alt: #1d4430;
   --text: #f1f5f3;
   --text-muted: #a8b8af;
@@ -322,4 +322,92 @@ hr {
   background: var(--primary);
   color: white;
   padding: 1rem;
+}
+
+/* PRODUK */
+.katalogSampah {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+  align-items: flex-start;
+}
+.filterKatalog {
+  flex: 0 0 220px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.filterKatalog h2 {
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+.filterKatalog label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.katalog {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+.itemProduk {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin: 1rem 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.itemProduk:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+.itemProduk img {
+  width: 220px;
+  height: 150px;
+  object-fit: cover;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  margin: 0.5rem;
+}
+.detailProduk {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.detailProduk h3 {
+  font-size: 14px;
+  margin: 0;
+  color: var(--text);
+}
+.detailProduk h3 span {
+  font-weight: 600;
+}
+.detailProduk .harga {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0;
+}
+.badgeKategori {
+  display: none;
 }

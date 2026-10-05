@@ -22,56 +22,64 @@ const PRODUK = [
     nama: "Botol Plastik PET",
     kategori: "plastik",
     harga: 3000,
-    gambar: "assets/botol.png",
+    gambar:
+      "https://media.istockphoto.com/id/906016838/id/foto/sekali-pakai-sampah-botol-plastik-tpa.jpg?s=612x612&w=0&k=20&c=DXd-jm1V1h7te562tYgNYI7NH6z2qe_Eycx8OK29abo=",
   },
   {
     id: 2,
     nama: "Gelas Plastik",
     kategori: "plastik",
     harga: 2500,
-    gambar: "assets/gelas.png",
+    gambar:
+      "https://media.istockphoto.com/id/906016838/id/foto/sekali-pakai-sampah-botol-plastik-tpa.jpg?s=612x612&w=0&k=20&c=DXd-jm1V1h7te562tYgNYI7NH6z2qe_Eycx8OK29abo=",
   },
   {
     id: 3,
     nama: "Kertas HVS & Buku",
     kategori: "kertas",
     harga: 2000,
-    gambar: "assets/kertas.png",
+    gambar:
+      "https://news.ralali.com/wp-content/uploads/2015/09/Cara-Memanfaatkan-Limbah-Kertas.jpg",
   },
   {
     id: 4,
     nama: "Kardus Bekas",
     kategori: "kertas",
     harga: 1500,
-    gambar: "assets/kardus.png",
+    gambar:
+      "https://news.ralali.com/wp-content/uploads/2015/09/Cara-Memanfaatkan-Limbah-Kertas.jpg",
   },
   {
     id: 5,
     nama: "Pecahan Kaca",
     kategori: "kaca",
     harga: 1000,
-    gambar: "assets/kaca.png",
+    gambar:
+      "https://mesinpengolahsampah.files.wordpress.com/2015/02/limbah-kaca.jpg?w=262&h=262",
   },
   {
     id: 6,
     nama: "Besi Tua",
     kategori: "logam",
     harga: 4500,
-    gambar: "assets/besi.png",
+    gambar:
+      "https://media.istockphoto.com/id/1467985832/id/foto/tumpukan-kaleng-bekas-pemilahan-sampah-dan-pengolahan-sampah-bahan-yang-dapat-didaur-ulang.jpg?s=170667a&w=0&k=20&c=ZfDOWR9dX6L4a9jS_fTnJXpnn_rkc6Yr13FiWd7vprQ=",
   },
   {
     id: 7,
     nama: "Kaleng Aluminium",
     kategori: "logam",
     harga: 5000,
-    gambar: "assets/kaleng.png",
+    gambar:
+      "https://media.istockphoto.com/id/1467985832/id/foto/tumpukan-kaleng-bekas-pemilahan-sampah-dan-pengolahan-sampah-bahan-yang-dapat-didaur-ulang.jpg?s=170667a&w=0&k=20&c=ZfDOWR9dX6L4a9jS_fTnJXpnn_rkc6Yr13FiWd7vprQ=",
   },
   {
     id: 8,
     nama: "Limbah Elektronik",
     kategori: "elektronik",
     harga: 7000,
-    gambar: "assets/elektronik.png",
+    gambar:
+      "https://media.istockphoto.com/id/1467985832/id/foto/tumpukan-kaleng-bekas-pemilahan-sampah-dan-pengolahan-sampah-bahan-yang-dapat-didaur-ulang.jpg?s=170667a&w=0&k=20&c=ZfDOWR9dX6L4a9jS_fTnJXpnn_rkc6Yr13FiWd7vprQ=",
   },
 ];
 const inputSearch = document.getElementById("inputSearch");
@@ -104,7 +112,7 @@ function renderProduk(items) {
   containerKatalog.innerHTML = html;
 }
 // search & filter
-function jalankanFilter() {
+function filterProduk() {
   const keyword = inputSearch.value.toLowerCase().trim();
   const kategoriAktif = Array.from(checkboxes)
     .filter((cb) => cb.checked && cb.id !== "semua")
@@ -121,8 +129,8 @@ function jalankanFilter() {
   });
   renderProduk(dataTersaring);
 }
-inputSearch.addEventListener("input", cariProduk);
-searchBtn.addEventListener("click", cariProduk);
+inputSearch.addEventListener("input", filterProduk);
+searchBtn.addEventListener("click", filterProduk);
 checkboxes.forEach((cb) => {
   cb.addEventListener("change", (e) => {
     if (e.target.id === "semua" && e.target.checked) {
@@ -132,7 +140,7 @@ checkboxes.forEach((cb) => {
     } else if (e.target.id !== "semua" && e.target.checked) {
       checkboxSemua.checked = false;
     }
-    jalankanFilter();
+    filterProduk();
   });
 });
 checkboxSemua.checked = true;
