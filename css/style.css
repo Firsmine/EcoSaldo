@@ -246,6 +246,7 @@ footer {
   height: 15rem;
   padding: 2rem;
   color: var(--text);
+  margin-top: 2rem;
 }
 .footerInfo {
   display: flex;
@@ -410,4 +411,141 @@ hr {
 }
 .badgeKategori {
   display: none;
+}
+
+/* KALKULATOR */
+.kalkulatorSampah {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+  align-items: flex-start;
+}
+.tambahKalkulator {
+  flex: 2;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  overflow-x: auto;
+}
+.tambahKalkulator table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+.tambahKalkulator th {
+  text-align: left;
+  padding-bottom: 16px;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+}
+.tambahKalkulator td {
+  padding: 12px 10px 12px 0;
+}
+.tambahKalkulator select,
+.tambahKalkulator input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background-color: var(--bg-card);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.tambahKalkulator select:focus,
+.tambahKalkulator input:focus {
+  border-color: var(--primary);
+}
+.tambahKalkulator input[readonly] {
+  background-color: var(--bg);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  border-color: transparent;
+}
+.estimasiNilai {
+  flex: 1;
+  background-color: var(--bg-alt);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.estimasiNilai h2 {
+  font-size: 16px;
+  color: var(--text);
+  margin-top: 0;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.estimasiNilai h2::before {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background-color: #f5b041;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: bold;
+}
+.estimasiNilai h1 {
+  font-size: 32px;
+  color: var(--text);
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+.estimasiNilai table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+}
+.estimasiNilai td {
+  padding: 8px 0;
+  font-size: 14px;
+  color: var(--text);
+}
+.estimasiNilai td:nth-child(2) {
+  text-align: center;
+  color: var(--text-muted);
+}
+.estimasiNilai td:last-child {
+  text-align: right;
+  font-weight: 600;
+}
+.btnKalkulator {
+  font-family: inherit;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+#btnAddSampah {
+  background-color: transparent;
+  color: var(--primary);
+  border: 1px dashed var(--primary);
+  width: 100%;
+}
+#btnAddSampah:hover {
+  background-color: var(--bg-alt);
+}
+#btnHitung {
+  background-color: var(--primary);
+  color: #ffffff;
+  border: none;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(19, 78, 50, 0.2);
+}
+#btnHitung:hover {
+  background-color: var(--accent);
 }

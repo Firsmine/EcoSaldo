@@ -129,22 +129,30 @@ function filterProduk() {
   });
   renderProduk(dataTersaring);
 }
-inputSearch.addEventListener("input", filterProduk);
-searchBtn.addEventListener("click", filterProduk);
-checkboxes.forEach((cb) => {
-  cb.addEventListener("change", (e) => {
-    if (e.target.id === "semua" && e.target.checked) {
-      checkboxes.forEach((box) => {
-        if (box.id !== "semua") box.checked = false;
-      });
-    } else if (e.target.id !== "semua" && e.target.checked) {
-      checkboxSemua.checked = false;
-    }
-    filterProduk();
+if (inputSearch) {
+  inputSearch.addEventListener("input", filterProduk);
+}
+if (searchBtn) {
+  searchBtn.addEventListener("click", filterProduk);
+}
+if (checkboxes.length > 0) {
+  checkboxes.forEach((cb) => {
+    cb.addEventListener("change", (e) => {
+      if (e.target.id === "semua" && e.target.checked) {
+        checkboxes.forEach((box) => {
+          if (box.id !== "semua") box.checked = false;
+        });
+      } else if (e.target.id !== "semua" && e.target.checked) {
+        if (checkboxSemua) checkboxSemua.checked = false;
+      }
+      filterProduk();
+    });
   });
-});
-checkboxSemua.checked = true;
-renderProduk(PRODUK);
+}
+if (containerKatalog) {
+  if (checkboxSemua) checkboxSemua.checked = true;
+  renderProduk(PRODUK);
+}
 
 // berat sampah transaksi
 const btnBerat = document.querySelectorAll(".btnBerat");
@@ -161,3 +169,85 @@ btnBerat.forEach((button) => {
     input.value = value;
   });
 });
+
+// KALKULATOR
+const KATALOG_HARGA = [
+  { id: "plastik_pet", nama: "Plastik PET", harga: 2000 },
+  { id: "kertas", nama: "Kertas/Kardus", harga: 1500 },
+  { id: "kaca", nama: "Kaca", harga: 1000 },
+  { id: "logam", nama: "Logam", harga: 3000 },
+  { id: "elektronik", nama: "Elektronik", harga: 15000 },
+];
+const tabelInput = document.getElementById("tabelInput");
+const tabelEstimasi = document.getElementById("tabelEstimasi");
+const btnAddSampah = document.getElementById("btnAddSampah");
+const btnHitung = document.getElementById("btnHitung");
+const labelTotal = document.querySelector(".estimasiNilai h1");
+
+function tambahBarisInput() {
+  const tr = document.createElement("tr");
+  tr.className = "baris-item";
+  let opsiKategori = `<option value="" disabled selected>Pilih Jenis</option>`;
+  KATALOG_HARGA.forEach((item) => {
+    opsiKategori += `<option value="${item.id}" data-harga="${item.harga}">${item.nama}</option>`;
+  });
+  tr.innerHTML = `
+    <td>
+      <select class="input-jenis">
+        ${opsiKategori}
+      </select>
+    </td>
+    <td>
+      <input type="text" class="input-harga" value="Rp 0" readonly>
+    </td>
+    <td>
+      <input type="number" class="input-berat" min="0" value="0">
+    </td>
+  `;
+  tabelInput.appendChild(tr);
+  const selectJenis = tr.querySelector(".input-jenis");
+  const inputHarga = tr.querySelector(".input-harga");
+  selectJenis.addEventListener("change", function () {
+    const harga = this.options[this.selectedIndex].getAttribute("data-harga");
+    inputHarga.value = `Rp ${parseInt(harga).toLocaleString("id-ID")}`;
+  });
+}
+
+function hitungEstimasi() {
+  const semuaBaris = document.querySelectorAll(".baris-item");
+  let totalKeseluruhan = 0;
+  tabelEstimasi.innerHTML = `
+    <tr>
+      <th>Jenis</th>
+      <th>Berat</th>
+      <th>Jumlah</th>
+    </tr>
+  `;
+  semuaBaris.forEach((baris) => {
+    const select = baris.querySelector(".input-jenis");
+    const inputBerat = baris.querySelector(".input-berat");
+    const berat = parseFloat(inputBerat.value) || 0;
+    if (select.value !== "" && berat > 0) {
+      const nama = select.options[select.selectedIndex].text;
+      const hargaPerKg = parseInt(
+        select.options[select.selectedIndex].getAttribute("data-harga"),
+      );
+      const subTotal = hargaPerKg * berat;
+      totalKeseluruhan += subTotal;
+      tabelEstimasi.insertAdjacentHTML(
+        "beforeend",
+        `
+        <tr>
+          <td>${nama}</td>
+          <td>${berat} kg</td>
+          <td>Rp ${subTotal.toLocaleString("id-ID")}</td>
+        </tr>
+      `,
+      );
+    }
+  });
+  labelTotal.innerText = `Rp ${totalKeseluruhan.toLocaleString("id-ID")}`;
+}
+btnAddSampah.addEventListener("click", tambahBarisInput);
+btnHitung.addEventListener("click", hitungEstimasi);
+tambahBarisInput();
