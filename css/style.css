@@ -549,3 +549,216 @@ hr {
 #btnHitung:hover {
   background-color: var(--accent);
 }
+
+/* TRANSAKSI */
+.formTransaksi {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+  align-items: flex-start;
+}
+.dataTransaksi {
+  flex: 3;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+.dataTransaksi h2 {
+  font-size: 16px;
+  color: var(--text);
+  margin-top: 0;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--border);
+}
+.dataTransaksi h2:nth-of-type(2) {
+  margin-top: 24px;
+}
+.dataTransaksi label {
+  display: block;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  margin-top: 12px;
+}
+.dataTransaksi input[type="text"],
+.dataTransaksi select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+.dataTransaksi input:focus,
+.dataTransaksi select:focus {
+  border-color: var(--primary);
+}
+.beratSampahNasabah {
+  display: flex;
+  flex-direction: column;
+}
+.inputBeratSampah {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--bg);
+  margin-bottom: 16px;
+}
+.inputBeratSampah input {
+  flex: 1;
+  border: none;
+  padding: 12px;
+  background: transparent;
+  color: var(--text);
+  text-align: left;
+  outline: none;
+}
+.inputBeratSampah .btnBerat {
+  background-color: transparent;
+  border: none;
+  border-left: 1px solid var(--border);
+  color: var(--text);
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.inputBeratSampah .btnBerat:hover {
+  background-color: var(--border);
+}
+.daftarTransaksi {
+  flex: 2;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+.daftarTransaksi h2 {
+  font-size: 16px;
+  color: var(--text);
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+.daftarTransaksi table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+}
+.daftarTransaksi th {
+  text-align: left;
+  padding-bottom: 12px;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+}
+.daftarTransaksi td {
+  padding: 12px 0;
+  font-size: 14px;
+  color: var(--text);
+  border-bottom: 1px solid var(--bg);
+}
+.empty-state-table {
+  text-align: center !important;
+  padding: 40px 0 !important;
+  color: var(--text-muted);
+}
+.empty-state-table p {
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+.empty-state-table span {
+  font-size: 12px;
+}
+.daftarTransaksi h1 {
+  font-size: 28px;
+  color: var(--text);
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+.btnTransaksi {
+  width: 100%;
+  font-family: inherit;
+  font-weight: 600;
+  padding: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 14px;
+  border: none;
+}
+#btnAddListTransaksi {
+  background-color: var(--primary);
+  color: #fff;
+}
+#btnAddListTransaksi:hover {
+  background-color: var(--accent);
+}
+#btnSaveTransaksi {
+  background-color: var(--primary);
+  color: #fff;
+}
+#btnSaveTransaksi.disabled {
+  background-color: var(--border);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.riwayat-section {
+  margin-top: 40px;
+}
+.riwayat-section h2 {
+  font-size: 20px;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.list-riwayat {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.card-riwayat {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+.riwayat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed var(--border);
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+.riwayat-header h4 {
+  margin: 0;
+  color: var(--text);
+  font-size: 16px;
+}
+.riwayat-header h4 span {
+  font-weight: normal;
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-left: 8px;
+}
+.riwayat-total {
+  margin: 0;
+  color: var(--primary);
+  font-size: 18px;
+}
+.riwayat-rincian {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 14px;
+}

@@ -248,6 +248,163 @@ function hitungEstimasi() {
   });
   labelTotal.innerText = `Rp ${totalKeseluruhan.toLocaleString("id-ID")}`;
 }
-btnAddSampah.addEventListener("click", tambahBarisInput);
-btnHitung.addEventListener("click", hitungEstimasi);
-tambahBarisInput();
+if (btnAddSampah) {
+  btnAddSampah.addEventListener("click", tambahBarisInput);
+}
+if (btnHitung) {
+  btnHitung.addEventListener("click", hitungEstimasi);
+}
+if (tabelInput) {
+  tambahBarisInput();
+}
+
+// TRANSAKSI
+const containerTransaksi = document.getElementById("transaksiContainer");
+if (containerTransaksi) {
+  const HARGA_SAMPAH = {
+    plastik: { nama: "Plastik PET", harga: 2000 },
+    kertas: { nama: "Kertas/Kardus", harga: 1500 },
+    kaca: { nama: "Kaca", harga: 1000 },
+    logam: { nama: "Logam", harga: 3000 },
+    elektronik: { nama: "Elektronik", harga: 15000 },
+  };
+  let keranjangTransaksi = [];
+  let riwayatTransaksi =
+    JSON.parse(localStorage.getItem("ecoSaldo-riwayat")) || [];
+  const inputNama = document.getElementById("namaNasabah");
+  const inputTelp = document.getElementById("telpNasabah");
+  const inputAlamat = document.getElementById("alamatNasabah");
+  const selectSampah = document.getElementById("sampahNasabah");
+  const inputBerat = document.querySelector(".inputBerat");
+  const btnAddList = document.getElementById("btnAddListTransaksi");
+  const btnSave = document.getElementById("btnSaveTransaksi");
+  const tabelList = document.getElementById("listTransaksi");
+  const labelTotal = document.querySelector(".daftarTransaksi h1");
+  const divRiwayat = document.getElementById("riwayatContainer");
+  const listRiwayat = document.getElementById("listRiwayat");
+
+  const btnBeratList = document.querySelectorAll(".btnBerat");
+  btnBeratList.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      let value = parseInt(inputBerat.value) || 0;
+      if (btn.dataset.quantity === "plus") value++;
+      if (btn.dataset.quantity === "minus" && value > 0) value--;
+      inputBerat.value = value;
+    });
+  });
+  function renderKeranjang() {
+    tabelList.innerHTML = `
+      <tr>
+        <th>No.</th>
+        <th>Jenis Sampah</th>
+        <th>Berat (kg)</th>
+        <th>Nilai (Rp)</th>
+      </tr>
+    `;
+    let totalKeseluruhan = 0;
+    if (keranjangTransaksi.length === 0) {
+      tabelList.insertAdjacentHTML(
+        "beforeend",
+        `
+        <tr>
+          <td colspan="4" class="empty-state-table">
+            <p>Belum ada transaksi</p>
+            <span>Tambahkan sampah terlebih dahulu.</span>
+          </td>
+        </tr>
+      `,
+      );
+      btnSave.classList.add("disabled");
+    } else {
+      btnSave.classList.remove("disabled");
+      keranjangTransaksi.forEach((item, index) => {
+        totalKeseluruhan += item.nilai;
+        tabelList.insertAdjacentHTML(
+          "beforeend",
+          `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${item.nama}</td>
+            <td>${item.berat}</td>
+            <td>Rp ${item.nilai.toLocaleString("id-ID")}</td>
+          </tr>
+        `,
+        );
+      });
+    }
+    labelTotal.innerText = `Rp ${totalKeseluruhan.toLocaleString("id-ID")}`;
+  }
+  function renderRiwayat() {
+    if (riwayatTransaksi.length === 0) {
+      divRiwayat.style.display = "none";
+      return;
+    }
+    divRiwayat.style.display = "block";
+    const riwayatTerbaru = [...riwayatTransaksi].reverse();
+    riwayatTerbaru.forEach((trx) => {
+      let rincianItems = trx.items
+        .map((i) => `${i.nama} (${i.berat}kg)`)
+        .join(", ");
+      listRiwayat.insertAdjacentHTML(
+        "beforeend",
+        `
+        <div class="card-riwayat">
+          <div class="riwayat-header">
+            <h4>${trx.nama} <span>(${trx.tanggal})</span></h4>
+            <h3 class="riwayat-total">Rp ${trx.total.toLocaleString("id-ID")}</h3>
+          </div>
+          <p class="riwayat-rincian"><strong>Item:</strong> ${rincianItems}</p>
+        </div>
+      `,
+      );
+    });
+  }
+  btnAddList.addEventListener("click", () => {
+    const jenis = selectSampah.value;
+    const berat = parseFloat(inputBerat.value) || 0;
+    if (jenis === "none") return alert("Silakan pilih jenis sampah!");
+    if (berat <= 0) return alert("Berat sampah harus lebih dari 0!");
+    const hargaPerKg = HARGA_SAMPAH[jenis].harga;
+    const namaSampah = HARGA_SAMPAH[jenis].nama;
+    keranjangTransaksi.push({
+      jenisId: jenis,
+      nama: namaSampah,
+      berat: berat,
+      nilai: berat * hargaPerKg,
+    });
+    selectSampah.value = "none";
+    inputBerat.value = 0;
+    renderKeranjang();
+  });
+  btnSave.addEventListener("click", () => {
+    if (keranjangTransaksi.length === 0) return;
+    if (
+      !inputNama.value.trim() ||
+      !inputTelp.value.trim() ||
+      !inputAlamat.value.trim()
+    ) {
+      return alert("Mohon lengkapi Data Nasabah terlebih dahulu!");
+    }
+    const total = keranjangTransaksi.reduce((sum, item) => sum + item.nilai, 0);
+    const transaksiBaru = {
+      id: Date.now(),
+      tanggal: new Date().toLocaleDateString("id-ID"),
+      nama: inputNama.value,
+      telp: inputTelp.value,
+      alamat: inputAlamat.value,
+      items: [...keranjangTransaksi],
+      total: total,
+    };
+    riwayatTransaksi.push(transaksiBaru);
+    localStorage.setItem("ecoSaldo-riwayat", JSON.stringify(riwayatTransaksi));
+    inputNama.value = "";
+    inputTelp.value = "";
+    inputAlamat.value = "";
+    keranjangTransaksi = [];
+    alert("Transaksi berhasil disimpan!");
+    renderKeranjang();
+    renderRiwayat();
+  });
+  renderKeranjang();
+  renderRiwayat();
+}
